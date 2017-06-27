@@ -7,43 +7,29 @@
 
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);    //connected to pins
 
+
 int i;
-int j = 14;
+float perc=0;
+String sign = "%";
 
 void setup()
 {
   lcd.begin(16, 2);
+  lcd.clear();
   
-  for (i = 0  ; i<16 ; ++i)
+  for (int i = 0  ; i<16 ; ++i)
     {
-    lcd.clear();
     lcd.setCursor(i,0);
-    lcd.print((char)126);
-
-    lcd.setCursor(j,1);
-    lcd.print((char)127);
-
-    --j;
-    delay(300);
-    }
-
-
-  j = 0;
-  
-  for (i = 15 ; i>-1 ; --i)
-    {
-    lcd.clear();
-    lcd.setCursor(i,0);
-    lcd.print((char)127);
+    lcd.print((char)511);
+    perc += 6.25;
     
-    lcd.setCursor(j,1);
-    lcd.print((char)126);
-
-    ++j;
+    lcd.setCursor(6,1);
+    lcd.print(int(perc) + sign);
+    
     delay(300);
     }
 
-    delay(750);
+    delay(1000);
     lcd.clear();
     lcd.setCursor(3,0);
     lcd.write("MohamadKh75");
